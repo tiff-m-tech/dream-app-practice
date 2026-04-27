@@ -88,28 +88,28 @@ let pothosCollection = [
 
 // 3 + 6: Loop through plants and check status
 // For loop to display on page which pothos are in your collection vs what ones you need
-function displayCollection() {
-    for (let i = 0; i < pothosCollection.length; i++) {
-    if(pothosCollection[i].inCollection === true) {
-        // 2: Combine strings with variables using interpolation
-        console.log(`Index: ${i}
-            Name: ${pothosCollection[i].name}
-            Status: In Collection
-            Display: ${pothosCollection[i].picture}`)
-    } else {
-        console.log(`Index: ${i}
-            Name: ${pothosCollection[i].name}
-            Status: Need
-            Display: ${pothosCollection[i].picture}`)
-        }
+function displayCollection(collection) {
+    for (let i = 0; i < collection.length; i++) {
+        if (collection[i].inCollection === true) {
+            // 2: Combine strings with variables using interpolation
+            console.log(`Index: ${i}
+                Name: ${collection[i].name}
+                Status: In Collection
+                Display: ${collection[i].picture}`);
+        } else {
+            console.log(`Index: ${i}
+                Name: ${collection[i].name}
+                Status: Need
+                Display: ${collection[i].picture}`);
+            }
     }
 }
 
 // Mark where original collection starts in console
-console.log("------------------------------- ORIGINAL COLLECTION ------------------------------")
+console.log("------------------------------- ORIGINAL COLLECTION ------------------------------");
 
 // Displays original collection
-displayCollection(pothosCollection)
+displayCollection(pothosCollection);
 
 // 1: Variable storing selected plant index
 // Connects to toggle button on display to change the plant from the owned or need list
@@ -117,20 +117,20 @@ let clickedOn = 0; // Example of one of the pothos being clicked on to change if
 
 // 3: Toggle logic
 if (pothosCollection[clickedOn].inCollection === true) {
-    pothosCollection[clickedOn].inCollection = false
+    pothosCollection[clickedOn].inCollection = false;
 } else {
-    pothosCollection[clickedOn].inCollection = true
+    pothosCollection[clickedOn].inCollection = true;
 }
 
 // Mark where readline asks user question starts in console
-console.log("------------------------------- READLINE QUESTIONS -------------------------------")
+console.log("------------------------------- READLINE QUESTIONS -------------------------------");
 
 // Connects to a button on the page that lets the user input a new plant needed/wanted for collection
-const input = require('readline-sync')
-let newName = input.question("Enter Name of Plant: ")
-let newPicture = input.question("Upload Picture: ")
+const input = require('readline-sync');
+let newName = input.question("Enter Name of Plant: ");
+let newPicture = input.question("Upload Picture: ");
 // 1: Store user input and boolean conversion
-let addedToCollection = input.question(`Is this a plant you already have in the collection? "yes" or "no"? `)
+let addedToCollection = input.question(`Is this a plant you already have in the collection? "yes" or "no"? `);
 
 // 5: Add new plant to array
 // Adds new plant to collection
@@ -141,7 +141,7 @@ pothosCollection.push({
 });
 
 // Mark where updated collection starts in console
-console.log("------------------------------- UPDATED COLLECTION -------------------------------")
+console.log("------------------------------- UPDATED COLLECTION -------------------------------");
 
 // Displays collection after changing the status of one plant and adding a new one to the list
-displayCollection(pothosCollection)
+displayCollection(pothosCollection);
